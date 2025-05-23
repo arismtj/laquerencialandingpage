@@ -1,0 +1,32 @@
+---
+import type { MenuItem } from "../types/types";
+
+interface Props extends MenuItem {}
+
+const { title, url } = Astro.props;
+---
+
+<li class=" menu  hover:text-yellow-700 text-white font-serif font-extrabold xl:text-2xl md:text-xl text-2xl transition-colors ">
+  <a href={url}>{title}</a>
+</li>
+
+<style>
+  .link {
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    padding: 0.2rem 0.7rem;
+  }
+
+.menu{
+  list-style-type: none;
+}
+
+  
+  @media (max-width: 700px){
+    li {
+      margin: 1.8rem 0;
+      text-align: center;
+      transition: .3s ease;
+    }
+  }
+</style>

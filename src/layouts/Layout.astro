@@ -1,0 +1,58 @@
+---
+import MenuItemView from "../components/MenuItemView.astro";
+import menuItems from "../data/menuItemsData";
+import Nav from "../components/Navbar/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Nav2 from "../components/Navbar/Nav2.astro";
+
+import Whatsapp from "../components/whatsapp/whatsapp.astro";
+
+//FUENTES
+
+//FUENTES
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/querenciahotellogo.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>La Querencia Hotel|</title>
+    <meta
+      name="description"
+      content="Disfruta de un Estancia Única en Nuestro Hotel Frente al Mar en Asia"
+    />
+  </head>
+  <body>
+   
+      <header>
+        <Nav2/>  
+      </header>
+      <main>
+      <slot />
+      <Whatsapp />
+      </main>      
+
+      <footer>
+        <Footer />
+       
+      </footer>
+   
+  </body>
+</html>
+
+<style>
+  body {    
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+</style>

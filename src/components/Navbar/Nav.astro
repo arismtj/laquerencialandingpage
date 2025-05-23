@@ -1,0 +1,78 @@
+---
+
+---
+
+<header class="m-0 p-0">
+    <nav class=" navbar  justify-between items-center ">
+      <div class="logo p-5 ">
+        <img src="/querenciahotellogo.png" class="w-36 mx-auto   justify-center  " />
+      </div>
+     
+      
+      <ul class="nav-links active flex gap-5 p-5 mx-auto justify-center bg-[#31cec3] text-white  relative z-[100]">
+        <slot/>
+      </ul>
+  
+      <div class="burger p-5 cursor-pointer">
+        <img src="/menu2.png" class="hambur size-8"/>
+      </div>
+  
+    </nav>
+  </header>
+  
+  <style>
+    .burger{
+      display: none;
+      
+    }
+  
+    .nav-links.active {
+      padding-left: 0px;
+      display: flex;
+    }
+  
+    @media (max-width: 700px){
+  
+      .navbar{
+        width: 100%;
+        display: flex;
+        position: relative;
+      }
+  
+      .logo{
+        margin-left: auto;
+        margin-right: auto;
+      }
+  
+      .burger{
+       
+        display: flex;
+      }
+  
+      .nav-links{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+     
+        width: 100%;
+        margin: 0;
+        left: 0;
+        text-align: center;
+        transition: all 0.3;
+        
+      }
+    
+  
+    }
+  </style>
+  
+  <script>
+    const burger = document.querySelector(".burger")
+    const navLinks = document.querySelector(".nav-links")
+  
+    burger?.addEventListener("click",()=>{
+      navLinks?.classList.toggle("active")
+    })
+  </script>
+  
