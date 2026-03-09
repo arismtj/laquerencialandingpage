@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;@import "tailwindcss";
+
+/* NAVBAR BASE*/
+
+.navbar{
+position: fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+transition: all .3s ease;
+}
+
+
+/* SOLO EN HOME */
+
+.navbar.home{
+background: transparent;
+}
+
+
+/* CUANDO HACE SCROLL EN HOME */
+
+.navbar.home.scrolled{
+background: rgba(0,0,0,0.5);
+backdrop-filter: blur(6px);
+-webkit-backdrop-filter: blur(6px);
+}
+
+/* OTRAS PAGINAS */
+
+.navbar.page{
+background:#ffffff;
+box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* CONTENEDOR */
+
+.container{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:18px 20px;
+}
+
+/* LOGO */
+
+.logo img{
+height:55px;
+}
+
+/* MENU */
+
+.menu{
+display:flex;
+gap:40px;
+}
+
+.menu a{
+text-decoration:none;
+font-weight:500;
+color:white;
+transition:.3s;
+}
+
+.navbar.page .menu a{
+color:#374151;
+}
+
+.menu a:hover{
+color:#22c55e;
+}
+
+/* HAMBURGER */
+
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+border:none;
+background:none;
+cursor:pointer;
+}
+
+.hamburger span{
+width:25px;
+height:3px;
+background:white;
+}
+
+.navbar.page .hamburger span{
+background:#374151;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+display:none;
+flex-direction:column;
+background:white;
+padding:20px;
+gap:16px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.mobile-menu a{
+text-decoration:none;
+color:#374151;
+font-weight:500;
+}
+
+.mobile-menu.active{
+display:flex;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.menu{
+display:none;
+}
+
+.hamburger{
+display:flex;
+}
+
+}
+
+.mobile-menu{
+display:none !important;
+}
+
+/* EVITAR QUE EL NAVBAR TAPE CONTENIDO */
+
+body{
+padding-top:80px;
+}
+
+/* PERO EN HOME NO */
+
+.home-page{
+padding-top:0;
+}
+
+
+/* COLOR TEXTO */
+
+.navbar.home .menu a{
+color:white;
+}
+
+.navbar.page .menu a{
+color:#374151;
+}
+
+/* LINKS DEL MENU */
+
+.menu a{
+position: relative;
+text-decoration: none;
+font-weight: 500;
+padding-bottom: 4px;
+transition: all .3s ease;
+}
+
+/* COLOR EN HOME */
+
+.navbar.home .menu a{
+color: white;
+}
+
+/* COLOR EN OTRAS PAGINAS */
+
+.navbar.page .menu a{
+color: #374151;
+}
+
+/* HOVER */
+
+.menu a:hover{
+color: #22c55e;
+}
+
+/* SUBRAYADO ANIMADO */
+
+.menu a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-4px;
+width:0;
+height:2px;
+background:#22c55e;
+transition:width .3s ease;
+}
+
+/* HOVER SUBRAYADO */
+
+.menu a:hover::after{
+width:100%;
+}
+
+/* LINK ACTIVO */
+
+.menu a.active{
+color:#22c55e;
+}
+
+.menu a.active::after{
+width:100%;
+}

@@ -1,0 +1,226 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const rooms = [
+  {
+    name: "Habitación Simple",
+    guests: "1 huésped",
+    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a",
+    desc: "Habitación cómoda ideal para viajeros solos.",
+    services: ["Wifi", "TV Cable", "Agua caliente"],
+  },
+  {
+    name: "Habitación Matrimonial",
+    guests: "2 huéspedes",
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
+    desc: "Perfecta para parejas que desean descansar.",
+    services: ["Wifi", "TV Cable", "Agua caliente"],
+  },
+  {
+    name: "Habitación Doble",
+    guests: "2 huéspedes",
+    image: "https://images.unsplash.com/photo-1611892440504-42a792e24d32",
+    desc: "Ideal para amigos o compañeros de viaje.",
+    services: ["Wifi", "TV Cable", "Agua caliente"],
+  },
+  {
+    name: "Habitación Triple",
+    guests: "3 huéspedes",
+    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427",
+    desc: "Espaciosa habitación ideal para familias.",
+    services: ["Wifi", "TV Cable", "Agua caliente"],
+  },
+  {
+    name: "Habitación Cuádruple",
+    guests: "4 huéspedes",
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+    desc: "Perfecta para familias o grupos.",
+    services: ["Wifi", "TV Cable", "Agua caliente"],
+  },
+  {
+    name: "Habitación Quíntuple",
+    guests: "5 huéspedes",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+    desc: "Amplia habitación para grupos grandes.",
+    services: ["Wifi", "TV Cable", "Agua caliente"],
+  },
+  {
+    name: "Habitación Séxtuple",
+    guests: "6 huéspedes",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+    desc: "Habitación espaciosa para grupos.",
+    services: ["Wifi", "TV Cable", "Agua caliente"],
+  },
+  {
+    name: "Mini Departamento",
+    guests: "Hasta 6 huéspedes",
+    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
+    desc: "Mini departamento con mayor espacio.",
+    services: ["Wifi", "TV Cable", "Agua caliente"],
+  },
+];
+---
+
+<Layout>
+  <section class="hero-rooms">
+    <div class="hero-overlay">
+      <h1>Nuestras Habitaciones</h1>
+      <p>Disfruta de comodidad y descanso en el Boulevard de Asia</p>
+    </div>
+  </section>
+
+  <section class="rooms-grid">
+    {
+      rooms.map((room) => (
+        <div class="room-card">
+          <img src={room.image} alt={room.name} />
+
+          <div class="room-info">
+            <h3>{room.name}</h3>
+
+            <p class="guests">👥 {room.guests}</p>
+
+            <p class="desc">{room.desc}</p>
+
+            <div class="services">
+              {room.services.map((service) => (
+                <span>{service}</span>
+              ))}
+            </div>
+
+            <a
+              href="https://wa.me/51953678592"
+              target="_blank"
+              class="btn-book"
+            >
+              Reservar por WhatsApp
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </section>
+</Layout>
+
+<style>
+  /* HERO */
+
+  .hero-rooms {
+    height: 300px;
+    background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.45);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+  }
+
+  .hero-overlay h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  .hero-overlay p {
+    font-size: 18px;
+  }
+
+  /* GRID */
+
+  .rooms-grid {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  /* CARD */
+
+  .room-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+  }
+
+  .room-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .room-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  /* INFO */
+
+  .room-info {
+    padding: 22px;
+  }
+
+  .room-info h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .guests {
+    color: #6b7280;
+    margin-bottom: 10px;
+  }
+
+  .desc {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #4b5563;
+  }
+
+  /* SERVICES */
+
+  .services {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+
+  .services span {
+    background: #f3f4f6;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+
+  /* BUTTON */
+
+  .btn-book {
+    display: inline-block;
+    background: #16a34a;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .btn-book:hover {
+    background: #15803d;
+  }
+</style>

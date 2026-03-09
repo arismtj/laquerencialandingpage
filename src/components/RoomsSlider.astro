@@ -1,0 +1,79 @@
+---
+const rooms = [
+  { name: "Simple", guests: "1 huésped", image: "/rooms/simple.jpg" },
+  { name: "Doble", guests: "2 huéspedes", image: "/rooms/doble.jpg" },
+  { name: "Triple", guests: "3 huéspedes", image: "/rooms/triple.jpg" },
+  { name: "Cuádruple", guests: "4 huéspedes", image: "/rooms/cuadruple.jpg" },
+  { name: "Quíntuple", guests: "5 huéspedes", image: "/rooms/quintuple.jpg" },
+  { name: "Séxtuple", guests: "6 huéspedes", image: "/rooms/sextuple.jpg" },
+  {
+    name: "Matrimonial",
+    guests: "2 huéspedes",
+    image: "/rooms/matrimonial.jpg",
+  },
+  { name: "Departamento", guests: "4 huéspedes", image: "/rooms/minidepa.jpg" },
+];
+---
+
+<section id="habitaciones" class="py-10 pb-5 bg-[#f5f2ea]">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-semibold text-center mb-10">
+      Nuestras Habitaciones
+    </h2>
+
+    <div class="swiper pb-10 overflow-visible">
+      <div class="swiper-wrapper">
+        {
+          rooms.map((room) => (
+            <div class="swiper-slide pb-6">
+              <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+                <img
+                  src={room.image}
+                  alt={room.name}
+                  class="w-full h-60 object-cover"
+                />
+
+                <div class="p-5 text-center">
+                  <h3 class="text-xl font-semibold mb-2">{room.name}</h3>
+
+                  <p class="text-gray-600">👥 {room.guests}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<script type="module">
+  import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+
+  new Swiper(".swiper", {
+    slidesPerView: 1,
+    centeredSlides: true,
+    spaceBetween: 20,
+    loop: true,
+
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        centeredSlides: false,
+      },
+      1024: {
+        slidesPerView: 3,
+        centeredSlides: false,
+      },
+      1280: {
+        slidesPerView: 4,
+        centeredSlides: false,
+      },
+    },
+  });
+</script>

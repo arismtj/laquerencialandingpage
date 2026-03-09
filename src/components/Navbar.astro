@@ -1,0 +1,46 @@
+---
+const path = Astro.url.pathname;
+const isHome = path === "/";
+---
+
+<header class={`navbar ${isHome ? "home" : "page"}`}>
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="/querenciahotellogo.png" alt="La Querencia Hotel" />
+    </a>
+
+    <!-- menú desktop -->
+    <nav class="menu">
+      <a href="/">Home</a>
+      <a href="/habitaciones">Habitaciones</a>
+      <a href="/#servicios">Servicios</a>
+      <a href="/#galeria">Galería</a>
+      <a href="/contacto">Contacto</a>
+    </nav>
+
+    <!-- botón mobile -->
+    <button id="hamburger" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- menú mobile -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="/">Home</a>
+    <a href="/habitaciones">Habitaciones</a>
+    <a href="/#servicios">Servicios</a>
+    <a href="/#galeria">Galería</a>
+    <a href="/contacto">Contacto</a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("hamburger");
+  const menu = document.getElementById("mobile-menu");
+
+  btn?.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+</script>

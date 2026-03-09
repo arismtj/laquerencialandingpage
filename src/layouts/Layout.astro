@@ -1,0 +1,111 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const path = Astro.url.pathname;
+const isHome = path === "/";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>La Querencia Hotel</title>
+    <link rel="icon" href="/favicon.ico" />
+    <meta
+      name="description"
+      content="Disfruta de un Estancia Única en Nuestro Hotel Frente al Mar en Asia"
+    />
+  </head>
+
+  <body
+    class={isHome ? "home-page" : ""}
+    "flex
+    flex-col
+    min-h-screen
+    bg-[#f5f1ea]"
+  >
+    <Navbar />
+
+    <!-- CONTENIDO DE LA PAGINA -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <Footer />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const navbar = document.querySelector(".navbar");
+        const menuBtn = document.getElementById("menu-btn");
+        const menuMobile = document.getElementById("menu-mobile");
+
+        const links = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".menu a");
+
+        /* MENU MOBILE */
+
+        menuBtn?.addEventListener("click", () => {
+          menuMobile.classList.toggle("active");
+        });
+
+        /* cerrar menu si pasa a desktop */
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 768) {
+            menuMobile.classList.remove("active");
+          }
+        });
+
+        /* NAVBAR SCROLL SOLO HOME */
+
+        if (navbar.classList.contains("home")) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 80) {
+              navbar.classList.add("scrolled");
+            } else {
+              navbar.classList.remove("scrolled");
+            }
+          });
+        }
+
+        /* LINK ACTIVO AL HACER CLICK */
+
+        links.forEach((link) => {
+          link.addEventListener("click", () => {
+            links.forEach((l) => l.classList.remove("active"));
+
+            link.classList.add("active");
+
+            /* cerrar menu mobile al hacer click */
+
+            menuMobile.classList.remove("active");
+          });
+        });
+
+        /* LINK ACTIVO SEGUN SCROLL */
+
+        window.addEventListener("scroll", () => {
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 120;
+
+            if (window.scrollY >= sectionTop) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+
+            if (link.getAttribute("href").includes(current)) {
+              link.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
