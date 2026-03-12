@@ -37,8 +37,8 @@ const isHome = path === "/";
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const navbar = document.querySelector(".navbar");
-        const menuBtn = document.getElementById("menu-btn");
-        const menuMobile = document.getElementById("menu-mobile");
+        const menuBtn = document.getElementById("hamburger");
+        const menuMobile = document.getElementById("mobile-menu");
 
         const links = document.querySelectorAll(".nav-link");
         const sections = document.querySelectorAll("section[id]");
@@ -107,5 +107,7 @@ const isHome = path === "/";
         });
       });
     </script>
+
+    
   </body>
 </html>

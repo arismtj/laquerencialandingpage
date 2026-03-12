@@ -1,17 +1,13 @@
 ---
 const rooms = [
-  { name: "Simple", guests: "1 huésped", image: "/rooms/simple.jpg" },
-  { name: "Doble", guests: "2 huéspedes", image: "/rooms/doble.jpg" },
-  { name: "Triple", guests: "3 huéspedes", image: "/rooms/triple.jpg" },
-  { name: "Cuádruple", guests: "4 huéspedes", image: "/rooms/cuadruple.jpg" },
-  { name: "Quíntuple", guests: "5 huéspedes", image: "/rooms/quintuple.jpg" },
-  { name: "Séxtuple", guests: "6 huéspedes", image: "/rooms/sextuple.jpg" },
-  {
-    name: "Matrimonial",
-    guests: "2 huéspedes",
-    image: "/rooms/matrimonial.jpg",
-  },
-  { name: "Departamento", guests: "4 huéspedes", image: "/rooms/minidepa.jpg" },
+  { name: "Simple", guests: "1 huésped", image: "/rooms/simple.jpg",  url: "/habitaciones/simple" },
+  { name: "Doble", guests: "2 huéspedes", image: "/rooms/doble.jpg", url: "/habitaciones/doble" },
+  { name: "Triple", guests: "3 huéspedes", image: "/rooms/triple.png", url: "/habitaciones/triple" },
+  { name: "Cuádruple", guests: "4 huéspedes", image: "/rooms/cuadruple.png", url: "/habitaciones/cuadruple" },
+  { name: "Quíntuple", guests: "5 huéspedes", image: "/rooms/quintuple.jpg", url: "/habitaciones/quintuple" },
+  { name: "Séxtuple", guests: "6 huéspedes", image: "/rooms/sextuple.jpg", url: "/habitaciones/sextuple" },
+  { name: "Matrimonial", guests: "2 huéspedes", image: "/rooms/matrimonial.png", url: "/habitaciones/matrimonial"},
+  { name: "Departamento", guests: "4 huéspedes", image: "/rooms/minidepa.jpg", url: "/habitaciones/minidepa" },
 ];
 ---
 
@@ -21,7 +17,7 @@ const rooms = [
       Nuestras Habitaciones
     </h2>
 
-    <div class="swiper pb-10 overflow-visible">
+    <div class="swiper pb-8 overflow-visible">
       <div class="swiper-wrapper">
         {
           rooms.map((room) => (
@@ -30,14 +26,25 @@ const rooms = [
                 <img
                   src={room.image}
                   alt={room.name}
-                  class="w-full h-60 object-cover"
+                  class="w-full h-60 object-cover"                  
                 />
+                
 
                 <div class="p-5 text-center">
                   <h3 class="text-xl font-semibold mb-2">{room.name}</h3>
 
                   <p class="text-gray-600">👥 {room.guests}</p>
                 </div>
+
+                <>
+                  <div class="px-6 pb-4 text-center">
+                    <a href={room.url} class="btn-room-premium  ">
+                      Ver detalles
+                      <span>→</span>
+                    </a>
+                  </div>
+                  
+                </>
               </div>
             </div>
           ))

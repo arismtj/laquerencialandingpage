@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Habitación Simple">
+  <section class="py-16 bg-[#f5f2ea]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h1 class="text-4xl font-semibold mb-6">Habitación Simple</h1>
+
+      <img
+        src="/rooms/simple.jpg"
+        class="w-full h-[420px] object-cover rounded-xl mb-10"
+      />
+
+      <div class="grid md:grid-cols-2 gap-10">
+        <div>
+          <h2 class="text-2xl font-semibold mb-4">Descripción</h2>
+
+          <p class="text-gray-600">
+            Habitación ideal para una persona, equipada con todas las
+            comodidades para una estadía confortable cerca al Boulevard de Asia.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-semibold mb-4">Servicios</h2>
+
+          <ul class="space-y-2 text-gray-600">
+            <li>✔ Wifi gratuito</li>
+            <li>✔ TV Cable</li>
+            <li>✔ Agua caliente</li>
+            <li>✔ Limpieza diaria</li>
+            <li>✔ Cerca a la playa</li>
+          </ul>
+
+          <a
+            href="https://wa.me/51953678592"
+            target="_blank"
+            class="inline-block mt-6 bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition"
+          >
+            Reservar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
