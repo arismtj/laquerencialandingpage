@@ -1,108 +1,230 @@
-<section id="galeria" class="py-16 bg-white scroll-mt-28">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl font-semibold text-center mb-12">
-      Galería del Hotel
-    </h2>
+---
+import Layout from "../layouts/Layout.astro";
 
-    <div class="grid md:grid-cols-4 md:grid-rows-2 gap-6">
-      <!-- Imagen grande -->
+const images = [
+  {
+    src: "/gallery/entrada1.jpg",
+    title: "Frontis",
+  },
+  {
+    src: "/gallery/frontis2.jpg",
+    title: "Frontis",
+  },
+  {
+ src: "/gallery/frontis3.jpg",
+    title: "Frontis",
+  },
+  {
+    src: "/gallery/recepcion.jpg",
+    title: "Recepción",
+  },
+  {
+    src: "/gallery/estacionamiento.jpg",
+    title: "Estacionamiento",
+  },
+  {
+    src: "/gallery/estacionamiento2.jpg",
+    title: "Estacionamiento",
+  },
+  {
+    src: "/gallery/restaurante2.jpg",
+    title: "Restaurante",
+  },
+  {
+     src: "/gallery/restaurante3.jpg",
+    title: "Restaurante",
+  },
+];
+---
+
+<dev title="Galería - La Querencia Hotel">
+  <section class="py-16 bg-[#f5f2ea]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-semibold text-center mb-12">
+        Galería del Hotel
+      </h2>
+
+      <!-- GRID -->
       <div
-        class="group relative md:col-span-2 md:row-span-2 overflow-hidden rounded-xl shadow-md hover:shadow-2xl transition duration-300"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
       >
-        <img
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-          alt="Playa de Asia"
-          class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-end p-6"
-        >
-          <div
-            class="text-white opacity-0 group-hover:opacity-100 transition duration-300"
-          >
-            <p class="text-lg font-semibold">Playa de Asia</p>
-
-            <p class="text-sm opacity-80">A minutos del hotel</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Piscina -->
-      <div
-        class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl transition duration-300"
-      >
-        <img
-          src="https://images.unsplash.com/photo-1566073771259-6a8506099945"
-          alt="Piscina"
-          class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-end p-4"
-        >
-          <p class="text-white opacity-0 group-hover:opacity-100 transition">
-            Piscina
-          </p>
-        </div>
-      </div>
-
-      <!-- Habitación -->
-      <div
-        class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl transition duration-300"
-      >
-        <img
-          src="/gallery/habitacioncomoda.png"
-          alt="Habitaciones"
-          class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-end p-4"
-        >
-          <p class="text-white opacity-0 group-hover:opacity-100 transition">
-            Habitaciones cómodas
-          </p>
-        </div>
-      </div>
-
-      <!-- Restaurante -->
-      <div
-        class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl transition duration-300"
-      >
-        <img
-          src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
-          alt="Restaurante"
-          class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-end p-4"
-        >
-          <p class="text-white opacity-0 group-hover:opacity-100 transition">
-            Restaurante
-          </p>
-        </div>
-      </div>
-
-      <!-- Vista hotel -->
-      <div
-        class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl transition duration-300"
-      >
-        <img
-          src="/gallery/estacionamiento.jpg"
-          alt="Hotel"
-          class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-        />
-
-        <div
-          class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-end p-4"
-        >
-          <p class="text-white opacity-0 group-hover:opacity-100 transition">
-            Playa de estacionamiento
-          </p>
-        </div>
+        {
+          images.map((img, index) => (
+            <div class="card" data-index={index}>
+              <img src={img.src} alt={img.title} />
+              <div class="info">
+                <p>{img.title}</p>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox hidden">
+    <span class="close">&times;</span>
+
+    <img id="lightbox-img" />
+
+    <p id="lightbox-title"></p>
+
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
   </div>
-</section>
+</dev>
+
+<!-- ESTILOS -->
+<style>
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover img {
+    transform: scale(1.1);
+  }
+
+  .info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover .info {
+    opacity: 1;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 70vh;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+
+  #lightbox-title {
+    color: white;
+    font-size: 18px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .prev {
+    left: 20px;
+  }
+
+  .next {
+    right: 20px;
+  }
+</style>
+
+<!-- SCRIPT -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+    const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightbox-img");
+    const title = document.getElementById("lightbox-title");
+    const close = document.querySelector(".close");
+    const prev = document.querySelector(".prev");
+    const next = document.querySelector(".next");
+
+    const images = Array.from(cards).map((card) => ({
+      src: card.querySelector("img").src,
+      title: card.querySelector("p").textContent,
+    }));
+
+    let current = 0;
+
+    cards.forEach((card, index) => {
+      card.addEventListener("click", () => {
+        current = index;
+        show();
+        lightbox.classList.remove("hidden");
+      });
+    });
+
+    function show() {
+      img.src = images[current].src;
+      title.textContent = images[current].title;
+    }
+
+    next.addEventListener("click", () => {
+      current = (current + 1) % images.length;
+      show();
+    });
+
+    prev.addEventListener("click", () => {
+      current = (current - 1 + images.length) % images.length;
+      show();
+    });
+
+    close.addEventListener("click", () => {
+      lightbox.classList.add("hidden");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.add("hidden");
+      }
+    });
+  });
+</script>

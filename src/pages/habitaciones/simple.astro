@@ -3,44 +3,100 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="Habitación Simple">
-  <section class="py-16 bg-[#f5f2ea]">
+  <section class="bg-[#f5f2ea] py-12">
     <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-4xl font-semibold mb-6">Habitación Simple</h1>
+      <!-- TITULO -->
 
-      <img
-        src="/rooms/simple.jpg"
-        class="w-full h-[420px] object-cover rounded-xl mb-10"
-      />
+      <h1 class="text-4xl font-semibold mb-8">Habitación Simple</h1>
 
-      <div class="grid md:grid-cols-2 gap-10">
+      <!-- GALERIA -->
+
+      <div class="grid grid-cols-4 grid-rows-2 gap-4 mb-12">
+        <img
+          src="/rooms/simple.jpg"
+          class="col-span-2 row-span-2 w-full h-full object-cover rounded-xl"
+        />
+
+        <img
+          src="/rooms/simple2.jpg"
+          class="w-full h-full object-cover rounded-xl"
+        />
+
+        <img
+          src="/rooms/simple3.jpg"
+          class="w-full h-full object-cover rounded-xl"
+        />
+
+        <img
+          src="/rooms/simple4.jpg"
+          class="w-full h-full object-cover rounded-xl"
+        />
+
+        <img
+          src="/rooms/simple5.jpg"
+          class="w-full h-full object-cover rounded-xl"
+        />
+      </div>
+
+      <!-- INFO HABITACION -->
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- DESCRIPCION -->
+
         <div>
           <h2 class="text-2xl font-semibold mb-4">Descripción</h2>
 
-          <p class="text-gray-600">
+          <p class="text-gray-600 leading-relaxed">
             Habitación ideal para una persona, equipada con todas las
             comodidades para una estadía confortable cerca al Boulevard de Asia.
+            Disfruta de un ambiente tranquilo, cómodo y seguro para tu descanso
+            durante tu visita.
           </p>
         </div>
+
+        <!-- SERVICIOS -->
 
         <div>
           <h2 class="text-2xl font-semibold mb-4">Servicios</h2>
 
-          <ul class="space-y-2 text-gray-600">
-            <li>✔ Wifi gratuito</li>
-            <li>✔ TV Cable</li>
-            <li>✔ Agua caliente</li>
-            <li>✔ Limpieza diaria</li>
-            <li>✔ Cerca a la playa</li>
-          </ul>
+          <div class="grid grid-cols-2 gap-4 text-gray-700">
+            <div class="flex items-center gap-2">
+              <span class="text-green-600">✔</span> Wifi gratuito
+            </div>
 
-          <a
-            href="https://wa.me/51953678592"
-            target="_blank"
-            class="inline-block mt-6 bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition"
-          >
-            Reservar por WhatsApp
-          </a>
+            <div class="flex items-center gap-2">
+              <span class="text-green-600">✔</span> TV Cable
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-green-600">✔</span> Agua caliente
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-green-600">✔</span> Limpieza diaria
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-green-600">✔</span> Cerca a la playa
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-green-600">✔</span> Ambiente cómodo
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- BOTON RESERVA -->
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/51953678592?text=Hola,%20quiero%20reservar%20una%20Habitación%20Simple%20en%20La%20Querencia%20Hotel"
+          target="_blank"
+          class="inline-block bg-green-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-green-700 transition shadow-lg"
+        >
+          Reservar por WhatsApp
+        </a>
       </div>
     </div>
   </section>

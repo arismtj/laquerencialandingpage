@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;@import "tailwindcss";
 
+body {
+  overflow-x: hidden;
+}
+
 /* NAVBAR BASE*/
 
 .navbar{
